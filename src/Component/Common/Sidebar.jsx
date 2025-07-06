@@ -282,7 +282,7 @@ const Sidebar = ({ setTheme }) => {
                     </ListItem>
                 </List>
             </Box >
-        </Box >
+        </Box>
     );
 
     // ============ Sidebar Data API ============
@@ -333,17 +333,19 @@ const Sidebar = ({ setTheme }) => {
 
     return (
         <>
-            {isMobile && (
-                <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    edge="start"
-                    onClick={handleDrawerToggle}
-                >
-                    <MenuIcon />
-                </IconButton>
-            )}
+            <Box position={"fixed"} top={0} left={"15px"}>
+                {isMobile && (
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        edge="start"
+                        onClick={handleDrawerToggle}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                )}
 
+            </Box>
             <Box component="nav" sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}>
                 <Drawer
                     variant={isMobile ? "temporary" : "permanent"}

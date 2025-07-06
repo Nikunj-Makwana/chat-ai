@@ -1,5 +1,5 @@
 import { Bolt, FlashOn, Info, Mic, NextPlanOutlined, Send, TrendingFlat, Warning, WarningAmber } from "@mui/icons-material";
-import { Avatar, Box, Button, Card, Chip, Grid, IconButton, InputAdornment, Paper, TextField, Typography } from "@mui/material";
+import { Avatar, Box, Button, Card, Chip, Grid, Hidden, IconButton, InputAdornment, Paper, TextField, Typography } from "@mui/material";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { motion } from 'framer-motion';
@@ -108,7 +108,7 @@ export default function Home() {
     if (!recognition) return;
 
     setIsRecording(true);
-    setText(""); // Clear previous text
+    setText("");
 
     recognition.start();
 
@@ -243,19 +243,20 @@ export default function Home() {
           <Grid container spacing={4}>
             {dashboardJson?.map((ele, index) => (
               <React.Fragment key={index}>
-                <Grid item xs={12} md={2}>
+                <Grid item xs={12} sm={3} md={2}>
                   <SideCard
                     icon={ele?.icon}
                     title={ele?.leftData}
                     desc={ele?.description}
                   />
                 </Grid>
+                <Hidden smDown>
+                  <Grid item xs={12} sm={1} display="flex" justifyContent="center" alignItems="center">
+                    <DividerDots />
+                  </Grid>
+                </Hidden>
 
-                <Grid item xs={12} md={1} display="flex" justifyContent="center" alignItems="center">
-                  <DividerDots />
-                </Grid>
-
-                <Grid container item xs={12} md={9} spacing={2}>
+                <Grid container item xs={12} sm={8} md={9} spacing={2}>
                   {ele?.ridhtSideData?.map((item, subIndex) => (
                     <Grid item xs={12} sm={6} key={subIndex}>
                       <MainCard
